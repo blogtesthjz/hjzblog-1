@@ -25,6 +25,9 @@ trait AuthenticatesUsers
      *
      * @return \Illuminate\Http\Response
      */
+    //看到这里可以看出，判断是否存在auth.authenticate文件，
+    //如果没有则用auth.login，这个文件其实就是views文件夹下面的blade文件，
+    //即resources/views/auth/login.blade.php
     public function showLoginForm()
     {
         $view = property_exists($this, 'loginView')
@@ -43,7 +46,7 @@ trait AuthenticatesUsers
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function postLogin(Request $request)
+    public function postLogin(Request $request)//这里是postlogin
     {
         return $this->login($request);
     }
@@ -54,16 +57,16 @@ trait AuthenticatesUsers
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function login(Request $request)
+    public function login(Request $request)//其实调用的是login
     {
         $this->validateLogin($request);
 
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
         // the login attempts for this application. We'll key this by the username and
         // the IP address of the client making these requests into this application.
-        $throttles = $this->isUsingThrottlesLoginsTrait();
+        $throttles = $this->isUsingThrottlesLoginsTrait(); //这个是判读用户登录的频率相关的
 
-        if ($throttles && $lockedOut = $this->hasTooManyLoginAttempts($request)) {
+        if ($throttles && $lockedOut = $this->hasTooManyLoginAttempts($request)) {//这里有一个更详细的toomanylogin
             $this->fireLockoutEvent($request);
 
             return $this->sendLockoutResponse($request);
@@ -72,6 +75,7 @@ trait AuthenticatesUsers
         $credentials = $this->getCredentials($request);
 
         if (Auth::guard($this->getGuard())->attempt($credentials, $request->has('remember'))) {
+            //这里是用来确认用户是否登陆过，会跟remember有关，就是免登陆相关的。
             return $this->handleUserWasAuthenticated($request, $throttles);
         }
 

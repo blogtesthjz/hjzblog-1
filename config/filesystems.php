@@ -45,7 +45,9 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root' => storage_path('app'),
+//            'root' => storage_path('app'),
+            'root' => public_path('uploads'),//将本地存储的根目录修改为前面创建的 public/uploads 目录。
+
         ],
 
         'public' => [

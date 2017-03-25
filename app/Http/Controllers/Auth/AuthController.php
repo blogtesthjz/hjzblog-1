@@ -21,7 +21,7 @@ class AuthController extends Controller
     |
     */
 
-    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+    use AuthenticatesAndRegistersUsers, ThrottlesLogins;//使用了这2个类作为主要的验证功能类，下面会说到
 
     /**
      * Where to redirect users after login / registration.
@@ -32,6 +32,7 @@ class AuthController extends Controller
     protected $redirectAfterLogout = '/auth/login';
     protected $redirectTo = '/auth/login';
 
+//    protected $username = 'name';
     /**
      * Create a new authentication controller instance.
      *
@@ -50,13 +51,14 @@ class AuthController extends Controller
      *
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
+     * //这里自带了一个验证逻辑，request的验证有2种方法，一种是写request文件，一种就是用validator
      */
     protected function validator(array $data)
     {
         return Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
+            'password' => 'required|min:6|confirmed',//默认有这些验证逻辑，这个逻辑是有讲究的，因为默认的laravel验证注册登录是会关联到这里的。
         ]);
     }
 
@@ -65,6 +67,7 @@ class AuthController extends Controller
      *
      * @param  array  $data
      * @return User
+     *  //这个就是create，在函数体里面就是用了model的create方法，直接在数据库生成数据
      */
     protected function create(array $data)
     {

@@ -9,8 +9,5 @@ use App\Http\Controllers\Controller;
 
 class UploadController extends Controller
 {
-    public function index()
-    {
-        return 'hahaha';
-    }
+
 }
