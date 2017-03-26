@@ -33,7 +33,11 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'auth'], function () {
 
 
     Route::get('admin/upload', 'UploadController@index');
-
+// 添加如下路由
+    Route::post('admin/upload/file', 'UploadController@uploadFile');
+    Route::delete('admin/upload/file', 'UploadController@deleteFile');
+    Route::post('admin/upload/folder', 'UploadController@createFolder');
+    Route::delete('admin/upload/folder', 'UploadController@deleteFolder');
 
 });
 

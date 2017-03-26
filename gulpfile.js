@@ -20,6 +20,9 @@ gulp.task("copyfiles", function() {
     gulp.src("vendor/bower_dl/bootstrap/dist/fonts/**")
         .pipe(gulp.dest("public/assets/fonts"));
 
+    gulp.src("vendor/bower_dl/clean-blog/less/**")
+        .pipe(gulp.dest("resources/assets/less/clean-blog"));
+
 });
 
 /**
