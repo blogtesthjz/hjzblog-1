@@ -26,6 +26,7 @@ class Tag extends Model
          * 阿瓦打我单安插完蛋澳网创建
          * 阿瓦嗲万多查无单爱哦的
         */
+        212313;
         return 0;
 
     }
