@@ -22,10 +22,11 @@ class Tag extends Model
     public function hah()
     {
         /**
-        *   刚刚创建分支， 
-         *  此时在3955分支下
-         * new branch
+        *   嗲啊啊啊啊啊啊啊啊阿啊啊啊啊啊啊啊啊阿啊啊啊啊啊
+         * 阿瓦打我单安插完蛋澳网创建
+         * 阿瓦嗲万多查无单爱哦的
         */
+        return 0;
 
     }
 
