@@ -19,29 +19,12 @@ class Tag extends Model
     {
         return $this->belongsToMany('App\Post', 'post_tag_pivot');
     }
-
-    /**
-     * Add any tags needed from the list
-     *
-     * @param array $tags List of tags to check/add
-     */
-    public static function addNeededTags(array $tags)
+    public function hah()
     {
-        if (count($tags) === 0) {
-            return;
-        }
+        /**
+        *   刚刚创建分支， new branch
+        */
 
-        $found = static::whereIn('tag', $tags)->lists('tag')->all();
-
-        foreach (array_diff($tags, $found) as $tag) {
-            static::create([
-                'tag' => $tag,
-                'title' => $tag,
-                'subtitle' => 'Subtitle for '.$tag,
-                'page_image' => '',
-                'meta_description' => '',
-                'reverse_direction' => false,
-            ]);
-        }
     }
+
 }
