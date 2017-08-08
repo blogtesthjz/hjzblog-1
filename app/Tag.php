@@ -22,7 +22,9 @@ class Tag extends Model
     public function hah()
     {
         /**
-        *   刚刚创建分支， new branch
+        *   刚刚创建分支， 
+         *  此时在3955分支下
+         * new branch
         */
 
     }
